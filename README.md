@@ -4,9 +4,9 @@ This Flask web application leverages various OpenAI models to provide a versatil
 
 ## Features
 
-### Text Conversion
+### Text Conversation
 
-The Text Conversion module allows users to interact with the GPT 3.5 turbo model by entering text messages. Users can have dynamic conversations, receive detailed responses, and explore the capabilities of the powerful language model.
+The Text Conversation allows users to interact with the GPT 3.5 turbo model by entering text messages. Users can have dynamic conversations, receive detailed responses, and explore the capabilities of the powerful language model. User can also do audio interaction with the LLM.
 
 ### Audio Conversation
 
