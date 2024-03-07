@@ -1,0 +1,1 @@
+The uploads folder will hold the PDF document when PDF Summarization is performed.
