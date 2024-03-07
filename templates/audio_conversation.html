@@ -1,0 +1,47 @@
+<!-- templates/audio_conversation.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Conversation</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Audio Conversation</h1>
+    
+    <div id="user-audio-container">
+        <h3>User's Recorded Audio:</h3>
+        <audio controls id="user-audio">
+            <source src="{{ url_for('download_user_audio') }}" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <form method="POST" action="/audio_conversation">
+        <h3>Audio Controls:</h3>
+        <button type="submit" name="record" value="start">Start Recording</button>
+        <button type="submit" name="record" value="stop">Stop Recording</button>
+        <button type="submit">Send</button>
+    </form>
+
+    <div id="ai-audio-container">
+        {% if ai_audio %}
+            <h3>AI's Response Audio:</h3>
+            <audio controls id="ai-audio">
+                <source src="{{ url_for('download_ai_audio') }}" type="audio/mp3">
+                Your browser does not support the audio element.
+            </audio>
+        {% endif %}
+    </div>
+
+    <a href="/"><button>Back to Home</button></a>
+
+    <script>
+        function playUserAudio() {
+            var userAudio = document.getElementById('user-audio');
+            userAudio.play();
+        }
+    </script>
+</body>
+</html>
