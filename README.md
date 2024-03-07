@@ -40,3 +40,8 @@ The Summarize PDF feature enables users to upload PDF documents, and GPT 3.5 tur
    ```bash
    python app.py
 4. Access the application in your web browser at http://localhost:5000
+
+## YouTube Demo Video
+
+Check out our demo video on YouTube: [Smart AI Flask App by Dev](https://www.youtube.com/watch?v=us4I_e9mbSA&t=1s)
+
