@@ -1,0 +1,144 @@
+<!-- templates/image_caption.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Caption</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .result-container {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        h3 {
+            color: #333;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        a button {
+            background-color: #008CBA;
+            color: #fff;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        a button:hover {
+            background-color: #005a7a;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        a button, a {
+            display: block;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Image Caption</h1>
+        
+        <form method="POST" action="/image_caption" enctype="multipart/form-data">
+            <label for="image">Upload Image:</label>
+            <input type="file" name="image" accept="image/*" required>
+            
+            <label for="prompt">Enter Prompt:</label>
+            <input type="text" name="prompt" required>
+
+            <br>
+            <button type="submit">Generate Caption</button>
+        </form>
+
+        {% if uploaded_image %}
+            <div class="result-container">
+                <h3>Uploaded Image:</h3>
+                <img src="data:image/png;base64,{{ uploaded_image }}" alt="Uploaded Image">
+                
+                <h3>Prompt:</h3>
+                <p>{{ prompt }}</p>
+
+                <h3>Generated Caption:</h3>
+                <p>{{ image_caption | safe}}</p>
+            </div>
+
+            <!-- Add a button to go back to the home page -->
+            <a href="/"><button>Back to Home</button></a>
+        {% endif %}
+    </div>
+</body>
+</html>

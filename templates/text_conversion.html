@@ -1,0 +1,126 @@
+<!-- templates/text_conversion.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chit-Chat with AI</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        #chat-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .user-message, .ai-message {
+            padding: 8px;
+            margin: 5px;
+            border-radius: 6px;
+        }
+
+        .user-message {
+            background-color: #dff0d8;
+        }
+
+        .ai-message {
+            background-color: #d9edf7;
+        }
+
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        a button {
+            background-color: #008CBA;
+            color: #fff;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        a button:hover {
+            background-color: #005a7a;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        a button, a {
+            display: block;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chit-Chat</h1>
+    
+    <div id="chat-container">
+        {% for message in chat_history %}
+            <div class="{{ message['role'] }}-message">{{ message['message'] }}</div>
+        {% endfor %}
+    </div>
+    
+    <form method="POST" action="/text_conversion">
+        <label for="user_input">Your Message:</label>
+        <textarea name="user_input" rows="4" cols="50"></textarea>
+        <br>
+        <button type="submit" name="record" value="start">Start Recording</button>
+        <button type="submit" name="record" value="stop">Stop Recording</button>
+        <button type="submit">Send</button>
+    </form>
+
+    <a href="/"><button>Back to Home</button></a>
+    
+</body>
+</html>
